@@ -146,13 +146,13 @@ public class MultiRobotProblem extends SearchProblem
         }
 
         @Override
-        public int getPriority()
+        public float getPriority()
         {
             return getHeuristicValue() + depth;
         }
 
         @Override
-        public int getHeuristicValue()
+        public float getHeuristicValue()
         {
             int heuristicValue = 0;
             for(int i=0;i<totalRobots;i++)

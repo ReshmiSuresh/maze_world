@@ -99,13 +99,13 @@ public class SingleRobotProblem extends SearchProblem
         }
 
         @Override
-        public int getPriority()
+        public float getPriority()
         {
             return getHeuristicValue() + depth;
         }
 
         @Override
-        public int getHeuristicValue()
+        public float getHeuristicValue()
         {
             return abs(state[0] - goalx) + abs(state[1] - goaly);
         }

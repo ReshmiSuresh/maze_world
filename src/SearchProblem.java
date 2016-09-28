@@ -12,8 +12,8 @@ public abstract class SearchProblem
         public ArrayList<SearchNode> getSuccessors();
         public boolean goalTest();
         public int getDepth();
-        public int getPriority();
-        public int getHeuristicValue();
+        public float getPriority();
+        public float getHeuristicValue();
     }
 
     public List<SearchNode> breadthFirstSearch()
@@ -81,7 +81,7 @@ public abstract class SearchProblem
     public List<SearchNode> aStarSearch()
     {
 //        Which nodes are visited.
-        HashMap<SearchNode, Integer> visited = new HashMap<>();
+        HashMap<SearchNode, Float> visited = new HashMap<>();
 //        For each node, which node it can most efficiently be reached from.
         HashMap<SearchNode, SearchNode> arrived_from = new HashMap<>();
 
@@ -102,7 +102,7 @@ public abstract class SearchProblem
         {
             SearchNode temp = queue.poll();
 
-            int priority = temp.getPriority();
+            float priority = temp.getPriority();
             if(visited.containsKey(temp))
             {
                 if (priority < visited.get(temp))
@@ -125,7 +125,7 @@ public abstract class SearchProblem
             for(int i=0;i<successors.size();i++)
             {
                 SearchNode next_node = successors.get(i);
-                int new_priority = next_node.getPriority();
+                float new_priority = next_node.getPriority();
                 if(!visited.containsKey(next_node) || visited.get(next_node) > new_priority)
                 {
                     queue.offer(next_node);
